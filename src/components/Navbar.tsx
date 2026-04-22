@@ -22,11 +22,10 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-black/70 backdrop-blur-xl border-b border-white/10 py-4" : "bg-transparent py-8"}`}>
+            <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"}`}>
                 <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
-                    <Link href="/" className="text-2xl font-black tracking-tighter text-white flex items-center gap-2">
-                        <span className="w-8 h-8 bg-[#D4AF37] rounded-lg flex items-center justify-center text-black text-sm">CB</span>
-                        CYBER<span className="text-[#D4AF37]">BOTS</span>
+                    <Link href="/" className="text-xl font-medium tracking-tight text-white flex items-center gap-2">
+                        Cyber<span className="text-[#D4AF37]">Bots</span>
                     </Link>
 
                     {/* Desktop Nav */}
@@ -35,13 +34,12 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-sm font-bold tracking-widest uppercase text-gray-300 hover:text-[#D4AF37] transition-all relative group"
+                                className="text-xs font-medium tracking-wider uppercase text-gray-400 hover:text-white transition-all relative group"
                             >
                                 {link.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#D4AF37] transition-all group-hover:w-full" />
                             </Link>
                         ))}
-                        <Link href="/contact" className="px-8 py-3 bg-white text-black font-black text-xs uppercase tracking-[0.2em] rounded-full hover:bg-[#D4AF37] transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <Link href="/contact" className="px-6 py-2.5 bg-white text-black font-semibold text-[11px] uppercase tracking-wider rounded-full hover:bg-gray-200 transition-all">
                             Contact
                         </Link>
                     </div>
@@ -51,7 +49,7 @@ export default function Navbar() {
                         className="md:hidden text-white"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
+                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </nav>
@@ -60,9 +58,9 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        exit={{ opacity: 0, y: -10 }}
                         className="fixed inset-0 z-[90] bg-black flex flex-col items-center justify-center gap-8 md:hidden"
                     >
                         {navLinks.map((link) => (
@@ -70,7 +68,7 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="text-3xl font-black text-white hover:text-[#D4AF37] transition-colors"
+                                className="text-2xl font-light text-white hover:text-[#D4AF37] transition-colors"
                             >
                                 {link.name}
                             </Link>
@@ -78,7 +76,7 @@ export default function Navbar() {
                         <Link
                             href="/contact"
                             onClick={() => setMobileMenuOpen(false)}
-                            className="px-10 py-4 bg-[#D4AF37] text-black font-black text-xl rounded-full"
+                            className="px-8 py-3 bg-[#D4AF37] text-black font-semibold text-lg rounded-full"
                         >
                             Contact
                         </Link>
